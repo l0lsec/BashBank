@@ -2,7 +2,7 @@
 
 # Check if a filename is provided
 if [ $# -lt 1 ]; then
-    echo "Usage: ./extract_subents.sh <filename>"
+    echo "Usage: ./extract_subents.sh <resolved_hostnames_file>"
     exit 1
 fi
 
