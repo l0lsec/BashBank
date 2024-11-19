@@ -32,7 +32,7 @@ while IFS= read -r line; do
         continue
     fi
 
-    # Chop off the third octet and append /24
+    # Chop off the fourth octet and append /24
     cidr=$(echo "$ip" | awk -F. '{print $1 "." $2 "." $3 ".0/24"}')
 
     # Add to temporary file
