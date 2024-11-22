@@ -2,7 +2,7 @@
 
 # Check if a filename is provided
 if [ $# -lt 1 ]; then
-    echo "Usage: ./resolve_hostnames.sh <filename>"
+    echo "Usage: ./resolve_hostnames.sh <GetADComputers Output Filename>"
     exit 1
 fi
 
