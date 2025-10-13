@@ -42,7 +42,8 @@ while IFS= read -r line; do
     # Extract fields
     username=$(echo "$line" | awk '{print $1}')
     email=$(echo "$line" | awk '{print $2}')
-    password_last_set=$(echo "$line" | awk '{print $3}')
+    password_last_set=$(echo "$line" | awk '{print $3 " " $4}')
+    last_logon=$(echo "$line" | awk '{print $5 " " $6}')
 
     # Print progress
     echo "Processing user: $username (line $line_count)"
@@ -68,7 +69,7 @@ while IFS= read -r line; do
     # Check if the password was last set more than 6 months ago
     if [ "$password_last_set_epoch" -lt "$six_months_ago" ]; then
         echo "$username has not reset their password in over 6 months. Last set on: $password_last_set"
-        echo "$username - Last Password Set: $password_last_set" >> "$output_file"
+        echo "$username - Last Password Set: $password_last_set - Last Logon: $last_logon" >> "$output_file"
     fi
 done < "$filename"
 
